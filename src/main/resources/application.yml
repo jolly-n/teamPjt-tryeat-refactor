@@ -6,6 +6,7 @@ spring:
     open-in-view: false
     hibernate:
       format_sql: true
+      ddl-auto: create
   profiles:
     include: security
 
