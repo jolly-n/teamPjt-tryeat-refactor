@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+<div class="container" style="max-width: 600px">
+  <div class="py-5 text-center">
+    <h2>404 오류</h2>
+  </div>
+  <hr class="my-4">
+
+  <!-- BasicErrorController가 제공하는 기본 정보들 -->
+  <ul>
+    <li>오류 정보</li>
+    <ul>
+      <li th:text="|message: ${message}|"></li>
+      <li th:text="|timestamp: ${timestamp}|"></li>
+      <li th:text="|path: ${path}|"></li>
+      <li th:text="|status: ${status}|"></li>
+    </ul>
+    </li>
+  </ul>
+</div> <!-- /container -->
+</body>
+
+</html>
