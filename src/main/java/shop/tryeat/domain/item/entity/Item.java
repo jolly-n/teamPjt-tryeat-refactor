@@ -21,7 +21,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import shop.tryeat.domain.common.BaseTimeEntity;
-import shop.tryeat.domain.item.exception.NotEnoughStockException;
 
 @Entity
 @Getter
@@ -89,11 +88,7 @@ public class Item extends BaseTimeEntity {
 
     // 주문이 일어났을 경우 재고 감소를 위한 로직
     public void removeStock(int quantity) {
-        int restStock = this.stockQuantity - quantity;
-        if (restStock < 0) {
-            throw new NotEnoughStockException("주문한 수량이 재고수량보다 많습니다.");
-        }
-        this.stockQuantity = restStock;
+        this.stockQuantity -= quantity;
     }
 
     // 상품 재고와 장바구니 수량 비교를 위한 로직
