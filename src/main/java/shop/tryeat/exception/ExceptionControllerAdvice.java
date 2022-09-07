@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
-import shop.tryeat.domain.item.exception.ItemNotFoundException;
 
 @RestControllerAdvice(annotations = RestController.class)
 public class ExceptionControllerAdvice {
@@ -21,7 +20,7 @@ public class ExceptionControllerAdvice {
     }
 
     @ResponseStatus(NOT_FOUND)
-    @ExceptionHandler(ItemNotFoundException.class)
+    @ExceptionHandler(BusinessException.class)
     public final ExceptionResponse handleNotFoundException(Exception exception, WebRequest request) {
         return new ExceptionResponse(new Date(), exception.getMessage(), request.getDescription(false));
     }
