@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import shop.tryeat.domain.item.dto.ItemSearchCondition;
 import shop.tryeat.domain.item.dto.ItemSearchDto;
 import shop.tryeat.domain.item.entity.Item;
+import shop.tryeat.domain.item.exception.ItemNotFoundException;
 import shop.tryeat.domain.item.repository.ItemRepository;
 
 @Service
@@ -43,7 +44,7 @@ public class ItemService {
      */
     public Item findItem(Long itemId) {
         return itemRepository.findById(itemId)
-                .orElseThrow(() -> new IllegalStateException("해당 상품을 찾을 수 없습니다."));
+                .orElseThrow(() -> new ItemNotFoundException(String.format("ID[%s] 상품을 찾을 수 없습니다.", itemId)));
     }
 
     /**
