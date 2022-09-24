@@ -12,7 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 
 @Slf4j
 @RestControllerAdvice(annotations = RestController.class)
-public class ExceptionControllerAdvice {
+public class ExceptionRestControllerAdvice {
 
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ExceptionResponse> handleAllException(Exception exception, WebRequest request) {
