@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -34,7 +35,7 @@ public class ItemApiController {
     private final ItemFacade itemFacade;
 
     @PostMapping
-    public ResponseEntity<String> newItem(@Valid @ModelAttribute ItemRequestDto itemRequestDto, BindingResult bindingResult) {
+    public ResponseEntity<String> newItem(@Valid @RequestBody ItemRequestDto itemRequestDto, BindingResult bindingResult) {
         // 이미지 검증
         if (itemRequestDto.getMainImage().isEmpty() || itemRequestDto.getDetailImage().isEmpty()) {
             bindingResult.rejectValue("mainImage", "ImageError", "메인이미지와 상세이미지는 필수값입니다.");
